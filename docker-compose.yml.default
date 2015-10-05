@@ -1,0 +1,19 @@
+moin:
+  image: masato/moin
+  volumes:
+    - ./data:/data
+    - ./backup:/backup
+  environment:
+    VIRTUAL_HOST: localhost
+    SUPER_USER:
+openresty:
+  image: tenstartups/openresty
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - ./nginx/conf:/etc/nginx
+    - /etc/localtime:/etc/localtime:ro
+  links:
+    - moin
+  command: ["nginx", "-c", "/etc/nginx/nginx.conf"]
