@@ -3,7 +3,8 @@ moin:
   volumes:
     - ./data:/data
     - ./backup:/backup
-  environment:
+    - /etc/localtime:/etc/localtime:ro
+environment:
     VIRTUAL_HOST: localhost
     SUPER_USER:
 openresty:
