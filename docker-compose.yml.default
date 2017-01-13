@@ -1,19 +1,25 @@
-moin:
-  image: masato/moin
-  volumes:
-    - ./data:/data
-    - ./backup:/backup
-  environment:
-    VIRTUAL_HOST: localhost
-    SUPER_USER:
-openresty:
-  image: tenstartups/openresty
-  ports:
-    - "80:80"
-    - "443:443"
-  volumes:
-    - ./nginx/conf:/etc/nginx
-    - /etc/localtime:/etc/localtime:ro
-  links:
-    - moin
-  command: ["nginx", "-c", "/etc/nginx/nginx.conf"]
+version: '2'
+services:
+  moin:
+    restart: always
+    image: masato/moin
+    volumes:
+      - ./data:/data
+      - ./backup:/backup
+    environment:
+      VIRTUAL_HOST: localhost
+      SUPER_USER: 
+  openresty:
+    restart: always
+    image: tenstartups/openresty
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx
+      - /etc/letsencrypt:/etc/letsencrypt
+      - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - moin
+    command: ["nginx", "-c", "/etc/nginx/nginx.conf"]
