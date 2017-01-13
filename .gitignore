@@ -2,7 +2,7 @@ nginx/conf/certs/server.*
 backup/user
 data/moin
 docker-compose.yml
-nginx/.htpasswd
+nginx/conf/.htpasswd
 nginx/conf/nginx.conf
 
 # Logs

@@ -19,7 +19,6 @@ services:
     volumes:
       - ./nginx/conf:/etc/nginx
       - /etc/letsencrypt:/etc/letsencrypt
-      - ./nginx/.htpasswd:/etc/nginx/.htpasswd:ro
       - /etc/localtime:/etc/localtime:ro
     depends_on:
       - moin
