@@ -6,6 +6,7 @@ services:
     volumes:
       - ./data:/data
       - ./backup:/backup
+      - /etc/localtime:/etc/localtime:ro
     environment:
       VIRTUAL_HOST: localhost
       SUPER_USER: 
@@ -23,3 +24,4 @@ services:
     depends_on:
       - moin
     command: ["nginx", "-c", "/etc/nginx/nginx.conf"]
+
