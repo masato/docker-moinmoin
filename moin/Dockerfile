@@ -1,9 +1,9 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER Masato Shimizu <ma6ato@gmail.com>
 
 ENV HOME /root
 ENV WORKDIR /root
-ENV MOIN_VERSION 1.9.8
+ENV MOIN_VERSION 1.9.9
 ENV EURO_VERSION 3995afe116b0
 
 RUN apt-get update && \
@@ -33,3 +33,4 @@ VOLUME ["/data"]
 CMD ["/run-moinmoin.sh"]
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
