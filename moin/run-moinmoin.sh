@@ -28,6 +28,7 @@ sed -e "/sitename/s/Untitled //" \
     -e "/page_front_page.*Front/s/#\(page_front_page\)/\1/" \
     -e "/superuser/ { s/#\(superuser\)/\1/; s/YourName/$SUPER_USER/ }" \
     -e "/page_front_page/s/#u/u/" \
+    -e "/acl_rights_before/s/.*/    acl_rights_default = u'$SUPER_USER:read,write,delete,revert,admin'\n&/"\
     -e "/theme_default/s/modernized/europython/" \
     -e "/theme_default/s/.*/    tz_offset = 9.0\n&/" \
    /usr/local/share/moin/config/wikiconfig.py > /usr/local/share/moin/wikiconfig.py
