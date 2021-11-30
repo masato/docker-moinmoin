@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   moin:
     restart: always
@@ -9,16 +9,14 @@ services:
       - /etc/localtime:/etc/localtime:ro
     environment:
       VIRTUAL_HOST: localhost
-      SUPER_USER: 
-  openresty:
-    restart: always
-    image: tenstartups/openresty
+      SUPER_USER: MasatoShimizu
+  nginx:
+    image: nginx
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - ./nginx/conf:/etc/nginx
-      - /etc/letsencrypt:/etc/letsencrypt
       - /etc/localtime:/etc/localtime:ro
     depends_on:
       - moin

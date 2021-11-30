@@ -14,13 +14,14 @@ RUN wget http://static.moinmo.in/files/moin-$MOIN_VERSION.tar.gz -P /tmp && \
     cd /tmp/moin-$MOIN_VERSION && \
     python setup.py install --force --prefix=/usr/local
 
-RUN wget https://bitbucket.org/thesheep/moin-europython/get/$EURO_VERSION.zip -P /tmp && \
-    unzip /tmp/$EURO_VERSION.zip -d /tmp && \
-    cd /tmp/thesheep* && \
-    cp europython.py /usr/local/share/moin/data/plugin/theme && \
-    cp -R /usr/local/lib/python2.7/dist-packages/MoinMoin/web/static/htdocs /usr/local/share/moin/htdocs && \
-    mkdir /usr/local/share/moin/htdocs/europython && \
-    cp -R css img /usr/local/share/moin/htdocs/europython
+#RUN wget https://bitbucket.org/thesheep/moin-europython/get/$EURO_VERSION.zip -P /tmp && \
+#    unzip /tmp/$EURO_VERSION.zip -d /tmp && \
+#    cd /tmp/thesheep* && \
+#    cp europython.py /usr/local/share/moin/data/plugin/theme && \
+#    cp -R /usr/local/lib/python2.7/dist-packages/MoinMoin/web/static/htdocs /usr/local/share/moin/htdocs && \
+#    mkdir /usr/local/share/moin/htdocs/europython && \
+#    cp -R css img /usr/local/share/moin/htdocs/europython
+RUN    cp -R /usr/local/lib/python2.7/dist-packages/MoinMoin/web/static/htdocs /usr/local/share/moin/htdocs
 
 RUN mkdir -p /data/moin/pages /data/moin/user
 

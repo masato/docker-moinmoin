@@ -1,5 +1,5 @@
 nginx/conf/certs/server.*
-backup/user
+backup
 data/moin
 docker-compose.yml
 nginx/conf/.htpasswd

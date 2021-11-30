@@ -14,10 +14,10 @@ chown -R www-data:www-data /data/moin/user/
 chmod -R g+w /data/moin/user/
 chmod 2775 /data/moin/user/
 
-if [ -d /data/moin/stylesheets ]; then
-  ln -sf /data/moin/stylesheets/common.css /usr/local/share/moin/htdocs/europython/css/common.css
-  ln -sf /data/moin/stylesheets/screen.css /usr/local/share/moin/htdocs/europython/css/screen.css
-fi
+#if [ -d /data/moin/stylesheets ]; then
+#  ln -sf /data/moin/stylesheets/common.css /usr/local/share/moin/htdocs/europython/css/common.css
+#  ln -sf /data/moin/stylesheets/screen.css /usr/local/share/moin/htdocs/europython/css/screen.css
+#fi
 
 if [ -f /.moinmoin_created ]; then
     exec /run.sh
@@ -29,7 +29,6 @@ sed -e "/sitename/s/Untitled //" \
     -e "/superuser/ { s/#\(superuser\)/\1/; s/YourName/$SUPER_USER/ }" \
     -e "/page_front_page/s/#u/u/" \
     -e "/acl_rights_before/s/.*/    acl_rights_default = u'$SUPER_USER:read,write,delete,revert,admin'\n&/"\
-    -e "/theme_default/s/modernized/europython/" \
     -e "/theme_default/s/.*/    tz_offset = 9.0\n&/" \
    /usr/local/share/moin/config/wikiconfig.py > /usr/local/share/moin/wikiconfig.py
 
